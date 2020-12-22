@@ -16,7 +16,10 @@ class Capturing(list):
 
 if __name__ == '__main__':
     with Capturing() as output:
-        diceware.main(["-d", "-", "-n", "4"])
-    my_pass = str(random.randint(0, 99))+"-"+output[0]
+        diceware.main(["-d", "-", "-n", "5"])
+    word_list = output[0].split("-")
+    word_list[random.randint(0, 4)] = str(random.randint(0, 99))
+    my_pass = "-".join(word_list)
+    #my_pass = str(random.randint(0, 99))+"-"+output[0]
     print(my_pass)
     pyperclip.copy(my_pass)
